@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.timerSnow = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timerSnow
+            // 
+            this.timerSnow.Tick += new System.EventHandler(this.timerSnow_Tick);
             // 
             // MainForm
             // 
@@ -43,6 +49,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerSnow;
     }
 }
 

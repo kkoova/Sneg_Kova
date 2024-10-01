@@ -15,6 +15,21 @@ namespace Sneg_Kova
         public MainForm()
         {
             InitializeComponent();
+            TimerInitialize();
+        }
+        private void TimerInitialize()
+        {
+            Timer timerSnow = new Timer
+            {
+                Interval = 80
+            };
+            timerSnow.Tick += timerSnow_Tick;
+            timerSnow.Start();
+        }
+
+        private void timerSnow_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
