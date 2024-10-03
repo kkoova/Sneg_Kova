@@ -43,6 +43,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImage = global::Sneg_Kova.Properties.Resources.forest;
+            this.DoubleBuffered = true;
             this.Name = "MainForm";
             this.ResumeLayout(false);
 

@@ -1,36 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sneg_Kova
 {
     public partial class MainForm : Form
     {
-        private List<Snowflake> snowflakes;
+        private List<Snowflake> snowflakes = new List<Snowflake>();
+        private Random random = new Random();
+
         public MainForm()
         {
             InitializeComponent();
-            InitializeSnowflakes();
+            CreateSnowflakes(100);
             TimerInitialize();
         }
 
-        private void InitializeSnowflakes()
-        {
-            const int initialCount = 50;
-            var snowflakes = new List<Snowflake>();
-            for (int i = 0; i < initialCount; i++)
-            {
-                float weight = new Random().Next(1, 10);
-                snowflakes.Add(new Snowflake(weight, this));
-            }
-            this.snowflakes = snowflakes;
-        }
         private void TimerInitialize()
         {
             Timer timerSnow = new Timer
@@ -43,11 +29,45 @@ namespace Sneg_Kova
 
         private void timerSnow_Tick(object sender, EventArgs e)
         {
+            UpdateSnowflakes();
+            Invalidate();
+        }
+
+        private void UpdateSnowflakes()
+        {
+            for (int i = 0; i < snowflakes.Count; i++)
+            {
+                snowflakes[i].Y += snowflakes[i].Speed;
+                if (snowflakes[i].Y > this.ClientSize.Height)
+                {
+                    snowflakes[i].Y = 0;
+                    snowflakes[i].X = random.Next(0, this.ClientSize.Width);
+                }
+            }
+        }
+
+        private void CreateSnowflakes(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                snowflakes.Add(new Snowflake
+                {
+                    X = random.Next(0, this.ClientSize.Width),
+                    Y = random.Next(0, this.ClientSize.Height),
+                    Speed = random.Next(1, 5),
+                    Size = random.Next(2, 6)
+                });
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
             foreach (var snowflake in snowflakes)
             {
-                snowflake.UpdatePosition();
+                g.FillEllipse(Brushes.White, snowflake.X, snowflake.Y, snowflake.Size, snowflake.Size);
             }
-            Invalidate();
         }
     }
 }
