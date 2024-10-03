@@ -12,7 +12,7 @@ namespace Sneg_Kova
 {
     public partial class MainForm : Form
     {
-        private Snowflake[] snowflakes;
+        private List<Snowflake> snowflakes;
         public MainForm()
         {
             InitializeComponent();
@@ -23,11 +23,11 @@ namespace Sneg_Kova
         private void InitializeSnowflakes()
         {
             const int initialCount = 50;
-            var snowflakes = new Snowflake[initialCount];
+            var snowflakes = new List<Snowflake>();
             for (int i = 0; i < initialCount; i++)
             {
-                float weight = new Random().Next(1, 10); // Вес снежинка от 1 до 10
-                snowflakes[i] = new Snowflake(weight);
+                float weight = new Random().Next(1, 10);
+                snowflakes.Add(new Snowflake(weight, this));
             }
             this.snowflakes = snowflakes;
         }
