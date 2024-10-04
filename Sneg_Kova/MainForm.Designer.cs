@@ -35,7 +35,7 @@
             // 
             // timerSnow
             // 
-            this.timerSnow.Tick += new System.EventHandler(this.timerSnow_Tick);
+            this.timerSnow.Tick += new System.EventHandler(this.TimerSnow_Tick);
             // 
             // MainForm
             // 
