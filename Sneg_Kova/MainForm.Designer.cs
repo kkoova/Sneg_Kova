@@ -1,6 +1,6 @@
 ﻿namespace Sneg_Kova
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,12 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.timerSnow = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // timerSnow
+            // 
+            this.timerSnow.Tick += new System.EventHandler(this.TimerSnow_Tick);
+            // 
+            // MainForm
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackgroundImage = global::Sneg_Kova.Properties.Resources.forest;
+            this.DoubleBuffered = true;
+            this.Name = "MainForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerSnow;
     }
 }
 
