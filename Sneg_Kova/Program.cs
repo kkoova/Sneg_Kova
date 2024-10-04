@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace Sneg_Kova
 {
-    internal static class Program
+    static internal class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

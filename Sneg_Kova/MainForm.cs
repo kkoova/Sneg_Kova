@@ -50,7 +50,7 @@ namespace Sneg_Kova
         /// </summary>
         private void UpdateSnowflakes()
         {
-            for (int i = 0; i < snowflakes.Count; i++)
+            for (var i = 0; i < snowflakes.Count; i++)
             {
                 snowflakes[i].Y += snowflakes[i].Speed;
                 if (snowflakes[i].Y > ClientSize.Height)
@@ -60,14 +60,14 @@ namespace Sneg_Kova
                 }
             }
         }
-        
+
         /// <summary>
         /// Создание снежинок
         /// </summary>
         /// <param name="count">Количество снежинок</param>
         private void CreateSnowflakes(int count)
         {
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 snowflakes.Add(new Snowflake
                 {
@@ -78,7 +78,7 @@ namespace Sneg_Kova
                 });
             }
         }
-        
+
         /// <summary>
         /// Отрисовка снежинок 
         /// </summary>
